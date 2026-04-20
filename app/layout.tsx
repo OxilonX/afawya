@@ -65,7 +65,7 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col container mx-auto w-xl">
-        <header className="flex items-center justify-between">
+        <header className="flex items-center justify-between py-4">
           <Image
             src={"/icons/afawya-logo.png"}
             width={120}
