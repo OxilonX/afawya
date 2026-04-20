@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-
+import Image from "next/image";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
@@ -18,9 +19,26 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", "font-sans", inter.variable)}
+      className={cn(
+        "h-full",
+        "dark",
+        "antialiased",
+        "font-sans",
+        inter.variable,
+      )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col container mx-auto w-xl">
+        <header className="flex items-center justify-between">
+          <Image
+            src={"/icons/afawya-logo.png"}
+            width={120}
+            height={120}
+            alt="logo"
+          />
+          <Navbar />
+        </header>
+        {children}
+      </body>
     </html>
   );
 }
