@@ -7,15 +7,15 @@ import { toPng } from "html-to-image";
 import { Phone, X, MessageSquare, Bell, User, Download } from "lucide-react";
 
 const UploadImageUI = () => {
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<string | null>(null);
   const [callerName, setCallerName] = useState("العفوية");
   const memeRef = useRef(null);
 
-  const handleImageChange = (fileOrBlob) => {
+  const handleImageChange = (fileOrBlob: File | Blob | string) => {
     if (fileOrBlob instanceof File || fileOrBlob instanceof Blob) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result);
+        setImage(reader.result as string);
       };
       reader.readAsDataURL(fileOrBlob);
     } else if (typeof fileOrBlob === "string") {
